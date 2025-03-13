@@ -1,30 +1,27 @@
 pipeline {
-    agent any
+  agent any
+  stages {
+    stage('Build'){
+      steps {
+        build 'PES1UG22CS320-1'
+        sh 'g++ cs320.cpp -o cs320'
+      }
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'g++ -o YOUR_SRN-1 main.cpp'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh './YOUR_SRN-1'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-            }
-        }
     }
-
-    post {
-        failure {
-            echo 'Pipeline failed'
-        }
+    stage('Test'){
+      steps {
+        sh './cs320.out'
+      }
     }
+    stage('Deploy'){
+      steps{
+        echo 'Deployed'
+      }
+    }
+  }
+  post{
+    failure{
+      error 'Pipeline failed'
+    }
+  }
 }
-
