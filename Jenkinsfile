@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Test'){
       steps {
-        sh './cs320.out'
+        sh './cs320'
       }
     }
     stage('Deploy'){
