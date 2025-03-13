@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(void) {
-  cout << "task - 5 new file \n"
+  cout << "task - 5 new file \n";
  
   return 0;
 }
